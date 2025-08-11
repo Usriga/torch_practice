@@ -66,7 +66,7 @@ def main():
     while open:
         success,img = cap.read()
         img = findHands(img)
-        lmList = findPosition(img,draw = True) # 画不画的完全没必要
+        lmList = findPosition(img,draw = False) # 画不画的完全没必要
 
         ### 按关节相对位置进行手势的识别，完全不够健壮，此处可以将位置点和真实标签做分类学习，加入判断
         if len(lmList) != 0:
@@ -96,7 +96,7 @@ def main():
             else:
                 count = 5
 
-            HandImage = cv2.imread(f'D:/pytorch_practice/Dataset/findhandimage/{count}.jpg')
+            HandImage = cv2.imread(f'D:/torch_practice/Dataset/findhandimage/{count}.jpg')
             HandImage = cv2.resize(HandImage, (150, 200))
             h, w, c = HandImage.shape
             img[0:h, 0:w] = HandImage  # 将视频左上角覆盖手势图片
